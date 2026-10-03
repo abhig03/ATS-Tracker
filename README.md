@@ -9,7 +9,8 @@ It provides detailed professional evaluations, highlights profile strengths and 
 ## 🌐 Live Application
 
 🚀 **The project is officially hosted and live!** You can use the web interface directly without any local installation here:
-👉 **[View Live App on Streamlit Cloud](https://ats-tracker-g2.streamlit.app/)** *(Replace this URL with your actual live application link)*
+
+👉 <a href="https://ats-tracker-g2.streamlit.app/" target="_blank" rel="noopener noreferrer">**Open Live App on Streamlit Cloud**</a>
 
 ---
 
