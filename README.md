@@ -99,8 +99,3 @@ This repository is continuously deployed to **Streamlit Community Cloud**:
 - **System Packages:** The `packages.txt` file ensures that the cloud Linux server automatically provisions `poppler-utils` during runtime setup.
 - **Secrets Management:** The application key **`GOOGLE_API_KEY`** is kept securely isolated out of public source control by injecting it directly through the Streamlit Advanced Settings environment panel.
 
----
-
-## 📝 License
-
-This project is open-source and available under the [MIT License](LICENSE).
