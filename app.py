@@ -6,11 +6,6 @@ from PIL import Image
 import pdf2image
 from google import genai
 
-# Load environment variables
-# load_dotenv()
-
-# Configuration
-# model_id = 'gemini-2.5-flash'
 
 if "GOOGLE_API_KEY" in st.secrets:
     api_key = st.secrets["GOOGLE_API_KEY"]
@@ -60,16 +55,37 @@ submit1 = st.button("Tell me about the Resume")
 submit3 = st.button("Percentage match")
 
 input_prompt1 = """
-You are an experienced Technical Human Resource Manager, your task is to review the provided resume against the job description. 
-Please share your professional evaluation on whether the candidate's profile aligns with the role. 
-Highlight the strengths and weaknesses of the applicant in relation to the specified job requirements.
+Role: You are an expert Human Resource Manager and Talent Acquisition Specialist across diverse industries.
+Task: Conduct a rigorous professional evaluation of the provided resume against the given job description.
+
+Instructions:
+1. Assess the overall alignment between the candidate's professional profile and the requirements of the role.
+2. Provide a detailed breakdown of the applicant's core strengths (skills, experiences, or achievements that match the role).
+3. Identify specific gaps or weaknesses where the candidate's profile falls short of the job criteria.
+4. Conclude with a definitive summary stating whether the candidate is a strong, moderate, or weak fit for the position.
+
+Maintain an objective, constructive, and highly professional corporate tone.
 """
 
+
 input_prompt3 = """
-You are a skilled ATS (Applicant Tracking System) scanner with a deep understanding of tech roles and ATS functionality, 
-your task is to evaluate the resume against the provided job description. Give me the percentage of match if the resume matches
-the job description. First the output should come as percentage and then keywords missing and last final thoughts.
+Role: You are an advanced Applicant Tracking System (ATS) optimization scanner calibrated for global hiring standards across all professional industries.
+Task: Evaluate the text/image of the resume against the provided job description to determine structural and contextual alignment.
+
+Strict Output Format Requirements:
+Your response must follow this exact layout down to the headers:
+
+### 1. ATS Match Percentage
+[Provide a realistic percentage match score between 0% and 100% based on skill matching, experience levels, and domain alignment.]
+
+### 2. Missing Keywords & Skills
+- [List critical hard skills, tools, methodologies, or certifications mentioned in the job description that are completely missing from the resume.]
+- [List relevant soft skills or domain-specific terminology that should be incorporated.]
+
+### 3. Final Strategic Thoughts
+[Provide a concise, data-driven analysis of why the score was given, and offer 2-3 actionable recommendations on how the candidate can modify their resume layout or phrasing to improve their ATS visibility for this specific type of role.]
 """
+
 
 if submit1:
     if uploaded_file is not None:
