@@ -1,21 +1,27 @@
 import os
 import io
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import streamlit as st
 from PIL import Image 
 import pdf2image
 from google import genai
 
 # Load environment variables
-load_dotenv()
+# load_dotenv()
 
 # Configuration
 # model_id = 'gemini-2.5-flash'
 
+if "GOOGLE_API_KEY" in st.secrets:
+    api_key = st.secrets["GOOGLE_API_KEY"]
+else:
+    # For local testing, ensure you run 'export GOOGLE_API_KEY=...' in your terminal before running streamlit
+    api_key = os.getenv("GOOGLE_API_KEY")
+
 model_id = 'gemini-3.8-flash'
 
 # Note: The new SDK looks for GEMINI_API_KEY by default, but you can pass GOOGLE_API_KEY explicitly
-client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+client = genai.Client(api_key=api_key)
 
 def get_gemini_response(input_text, pdf_content, prompt):
     # pdf_content[0] is now a raw PIL Image object, which the SDK accepts natively
